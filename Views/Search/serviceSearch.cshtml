@@ -1,0 +1,135 @@
+﻿@{
+    ViewBag.Title = "serviceSearch";
+}
+@model List<DONATE_TO_SAVE.Models.Service>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title></title>
+</head>
+
+<body>
+    <div class="container">
+
+        <!-- Page Heading/Breadcrumbs -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                    Search Results for Services
+                </h1>
+                <ol class="breadcrumb">
+                    <li>
+                        <a href="#">Home</a>
+                    </li>
+                    <li class="active">Services</li>
+                </ol>
+            </div>
+        </div>
+        <hr />
+        <div>
+            @if (Session["uname"] != null)
+            {
+                <form class="navbar-form navbar-center" action="/Search/serviceSearchFunction" role="search">
+                    <div class="form-group">
+                        <input type="text" maxlength="100" size="139" name="search" required="" class="form-control" placeholder="Search Services Here" />
+                    </div>
+                    <input type="submit" class="btn btn-default btn-info" value="Search" />
+                </form>
+            }
+        </div>
+        <hr />
+        <!-- /.row
+
+        Image Header-->
+        <div class="row">
+            <div class="col-lg-12">
+                <img class="img-responsive" src="/images/page1_img2.jpg" alt="">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="page-header">Services Panels</h2>
+            </div>
+            @foreach (var s in Model)
+            {
+                <div class="col-md-3 col-sm-6">
+                    <div class="panel panel-default text-center">
+                        <div class="panel-heading">
+                            <span class="fa-stack fa-5x">
+                                <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                                <i class="fa fa-tree fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </div>
+                        <div class="panel-body">
+                            <h4>@s.Description</h4>
+                            @if ((string)Session["uname"] == "admin")
+                            {
+                                <a class="btn btn-default btn-info" style="margin-right:1%" href="GetServices?id=@s.Id">Update</a>
+                                <a class="btn btn-default btn-danger" style="margin-right:1%" href="DeleteServices?id=@s.Id">Delete</a>
+
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <hr />
+        <!-- Service Tabs -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="page-header">Services Info</h2>
+            </div>
+            <div class="col-lg-12">
+                <div id="myTabContent" class="tab-content">
+                    @foreach (var m in Model)
+                    {
+                        <div class="tab-pane fade active in" id="@m.Id">
+                            <h3>@m.Description</h3>
+                            <p>@m.Complete_Explanation</p>
+                        </div>
+                        <br /><br />
+                    }
+                </div>
+
+            </div>
+        </div>
+        <hr />
+        @if ((string)Session["uname"] == "admin")
+        {
+            <div class="row">
+                <div class="col-md-8">
+                    <h3>Add Service</h3>
+                    <form name="sentMessage" action="~/Service/AddService" id="contactForm">
+                        <div class="control-group form-group">
+                            <div class="controls">
+                                <label>Title:</label>
+                                <input type="text" name="Description" required="" class="form-control" id="message" style="resize:none" />
+                            </div>
+                        </div>
+                        <div class="control-group form-group">
+                            <div class="controls">
+                                <label>Explanation:</label>
+                                <textarea name="Complete_Explanation" rows="10" cols="100" class="form-control" id="message" required="" maxlength="999" style="resize:none"></textarea>
+                            </div>
+                        </div>
+                        <div id="success"></div>
+                        <button type="submit" class="btn btn-primary">Add Service</button>
+                    </form>
+                </div>
+            </div>
+        }
+        <hr>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+﻿@{
+    ViewBag.Title = "Update Service";
+}
+@model DONATE_TO_SAVE.Models.Service
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title></title>
+</head>
+<body>
+
+    <div class="container"><br /><br /><br /><br /><br /><br /></div>
+    <div class="row">
+        <div class="col-md-4">
+        </div>
+        <div class="container col-md-4 center">
+            @using(Html.BeginForm("UpdateServiceFunction","Service",FormMethod.Post))
+            {
+                <h2 class="form-signin-heading">Update Service</h2>
+                @Html.HiddenFor(m => m.Id)
+                @Html.LabelFor(m=>m.Description)
+                @Html.EditorFor(m => m.Description, new { @class = "form_control" })
+                <br /><br />
+                @Html.Label("Explanation")
+                @Html.TextAreaFor(m => m.Complete_Explanation, new { @rows="10", @cols="70"})
+                <input type="submit" class="btn-lg btn-success" value="Update!" />
+            }
+        </div>
+    </div>
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <!-- jQuery 
+    <script src="~/Scripts/jquery.js"></script>
+    <!-- Bootstrap Core JavaScript
+    <script src="~/Scripts/bootstrap.min.js"></script>-->
+</body>
+
+</html>

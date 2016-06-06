@@ -1,0 +1,149 @@
+﻿@{
+    ViewBag.Title = "showAllUsers";
+}
+@model List<DONATE_TO_SAVE.Models.User>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title></title>
+</head>
+<body>
+    <div class="container">
+        <!-- Page Heading/Breadcrumbs -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                    All Users
+                </h1>
+                <ol class="breadcrumb">
+                    <li>
+                        <a href="#">Home</a>
+                    </li>
+                    <li class="active">Show All Users</li>
+                </ol>
+            </div>
+        </div>
+        <div>
+            @if (Session["uname"] != null)
+            {
+                <form class="navbar-form navbar-center" action="/Search/userSearchFunction" role="search">
+                    <div class="form-group">
+                        <input type="text" maxlength="100" size="139" name="search" required="" class="form-control" placeholder="Search Users Here" />
+                    </div>
+                    <input type="submit" class="btn btn-default btn-info" value="Search" />
+                </form>
+            }
+        </div>
+        <div style=" background-color:aliceblue">
+            <hr />
+            <h1>Volunteers</h1>
+            <hr />
+        </div>
+
+        @foreach(var u in Model)
+        {
+            if(u.Name != "admin" && u.User_Type == "volunteer")
+            {
+                  <div class="row">
+            <!-- Map Column -->
+            <div class="col-md-3">
+                <img width="230" height="230" class="img-responsive" src="@u.Image" alt="">
+            </div>
+            <!-- Contact Details Column -->
+            <div class="col-md-8">
+                <h4>
+                    Profile Details
+                    @if ((string)Session["uname"] == "admin")
+                    {
+                        <a class="btn btn-default btn-danger pull-right" style="margin-right:0.5%" href="~/User/deleteUser?id=@u.Id">Delete this User</a>
+                        <a class="btn btn-default btn-info pull-right" style="margin-right:0.5%" href="~/Contact/AssignTask?id=@u.Id">Assign him a Task</a>
+                    }
+                </h4>
+                <br />
+                <p>
+                        <i class="fa fa-pencil-square-o"></i>
+                        <abbr title="Name">N</abbr>: @u.Name
+                </p>
+                <p>
+                        <i class="fa fa-phone"></i>
+                        <abbr title="Phone">P</abbr>: @u.Phone
+                </p>
+
+                <p>
+                        <i class="fa fa-envelope-o"></i>
+                        <abbr title="Email">E</abbr>: <a href="#">@u.Email</a>
+                </p>
+                <p>
+                        <i class="fa fa-home"></i>
+                        <abbr title="Home">H</abbr>: @u.Address
+                </p>
+                <p>
+                        <i class="fa fa-dollar"></i>
+                        <abbr title="User Type">He/She is </abbr>: @u.User_Type
+                </p>
+            </div>
+        </div>
+            <hr />
+        <!-- /.row -->
+            }     
+        }
+        <div style="background-color:aliceblue">
+            <hr />
+            <h1>Donors</h1>
+            <hr />
+        </div>
+        @foreach (var u in Model)
+        {
+            if (u.Name != "admin" && u.User_Type == "donor")
+            {
+                <div class="row">
+                    <!-- Map Column -->
+                    <div class="col-md-3">
+                        <img width="230" height="230" class="img-responsive" src="@u.Image" alt="">
+                    </div>
+                    <!-- Contact Details Column -->
+                    <div class="col-md-8">
+                        <h4>
+                            Profile Details
+                            @if ((string)Session["uname"] == "admin")
+                            {
+                                <a class="btn btn-default btn-danger pull-right" style="margin-right:0.5%" href="~/User/deleteUser?id=@u.Id">Delete this User</a>
+                            }
+                        </h4>
+                        <br />
+                        <p>
+                            <i class="fa fa-pencil-square-o"></i>
+                            <abbr title="Name">N</abbr>: @u.Name
+                        </p>
+                        <p>
+                            <i class="fa fa-phone"></i>
+                            <abbr title="Phone">P</abbr>: @u.Phone
+                        </p>
+
+                        <p>
+                            <i class="fa fa-envelope-o"></i>
+                            <abbr title="Email">E</abbr>: <a href="#">@u.Email</a>
+                        </p>
+                        <p>
+                            <i class="fa fa-home"></i>
+                            <abbr title="Home">H</abbr>: @u.Address
+                        </p>
+                        <p>
+                            <i class="fa fa-dollar"></i>
+                            <abbr title="User Type">He/She is </abbr>: @u.User_Type
+                        </p>
+                    </div>
+                </div>
+                <hr />
+        <!-- /.row -->
+            }
+        }
+    </div>
+</body>
+</html>

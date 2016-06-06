@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "ReplyToMessage";
+}
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Login</title>
+</head>
+<body>
+
+    <div class="container"><br /><br /><br /><br /><br /></div>
+    <div class="row center-block" style="margin-left:20%">
+        <div class="col-md-8">
+            <h2>Reply to the User</h2>
+            <br />
+            <form name="sentMessage" id="contactForm" action="~/Reply/AddReply">
+                <div class="control-group form-group">
+                    <div class="controls">
+                        <label>Reply:</label>
+                        <textarea name="Reply1" rows="10" cols="100" class="form-control" id="message" required="" maxlength="999" style="resize:none"></textarea>
+                    </div>
+                </div>
+                <div id="success"></div>
+                <!-- For success/fail messages -->
+                <button type="submit" class="btn btn-primary">Send Reply</button>
+            </form>
+        </div>
+    </div>
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+</body>
+
+</html>

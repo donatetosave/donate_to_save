@@ -1,0 +1,67 @@
+﻿@{
+    ViewBag.Title = "Stories";
+}
+@model DONATE_TO_SAVE.Models.Story
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title></title>
+</head>
+<body>
+    <div class="container">
+        <!-- Page Heading/Breadcrumbs -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                    True Stories
+                </h1>
+                <ol class="breadcrumb">
+                    <li>
+                        <a href="~/Home">Home</a>
+                    </li>
+                    <li class="active">Stories</li>
+                </ol>
+            </div>
+        </div>
+        <hr />
+        <div>
+            @if(Session["uname"] != null)
+            {
+              <form class="navbar-form navbar-center" action="/Search/storySearchFunction" role="search">
+                <div class="form-group">
+                    <input type="text" maxlength="100" size="139" name="search" required="" class="form-control" placeholder="Search Stories Here" />
+                </div>
+                <input type="submit" class="btn btn-default btn-info" value="Search" />
+            </form>                 
+            }
+        </div>
+        <hr />
+        <!-- /.row -->
+        <!-- Intro Content -->
+        <div class="row">
+            <h1>True Stories </h1>
+            <div class="col-md-5">
+                <img class="img-responsive" src="@Model.Image" alt="">
+            </div>
+            <div class="col-md-7">
+                <h3>
+                    @Model.Title
+                    @if ((string)Session["uname"] == "admin")
+                    {
+                        <a class="btn btn-default btn-info pull-right" style="margin-right:1%" href="~/Story/UpdateStoryView?id=@Model.Id">Update</a>
+                        <a class="btn btn-default btn-danger pull-right" style="margin-right:1%" href="~/Story/DeleteStory?id=@Model.Id">Delete</a>
+                    }
+                    </h3>
+                @Model.Explanation
+                </div>
+        </div>
+        <hr>
+    </div>
+</body>
+</html>

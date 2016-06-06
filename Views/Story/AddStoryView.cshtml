@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "AddStoryView";
+}
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Login</title>
+</head>
+<body>
+
+    <div class="container"><br /><br /><br /><br /><br /><br /></div>
+    <div class="row">
+        <div class="col-md-4">
+        </div>
+        <div class="container col-md-4 center">
+
+            <form class="form-signin" action="~/Story/AddStory" method="post" enctype="multipart/form-data">
+                <h2 class="form-signin-heading">Add Story</h2>
+                <label for="inputName" class="sr-only">Title</label>
+                <input type="text" id="inputName" name="Title" class="form-control" style="width:90%" required="" placeholder="Enter Story name"><br />
+                <div class="control-group form-group">
+                    <div class="controls">
+                        <label>Explanation:</label>
+                        <textarea name="Explanation" rows="10" cols="100" class="form-control" id="message" required="" maxlength="999" style="resize:none"></textarea>
+                    </div>
+                </div><div class="form-group">
+                    <font size="3">
+                        Upload Profile Picture:<br /> <input required="" type="file" name="Image">
+                    </font>
+                </div><br />
+                <input type="submit" class="btn-lg btn-success" value="Add Story!" />
+            </form>
+        </div>
+        <div class="col-md-4">
+
+        </div>
+    </div>
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+</body>
+
+</html>

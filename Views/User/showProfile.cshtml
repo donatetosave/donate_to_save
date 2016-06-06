@@ -1,0 +1,125 @@
+﻿@{
+    ViewBag.Title = "showProfile";
+}
+@model DONATE_TO_SAVE.Models.User
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title></title>
+</head>
+<body>
+    <div class="container">
+        <!-- Page Heading/Breadcrumbs -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                    Your Profile
+                </h1>
+                <ol class="breadcrumb">
+                    <li>
+                        <a href="#">Home</a>
+                    </li>
+                    <li class="active">Your Profile</li>
+                </ol>
+            </div>
+        </div>
+        <!-- /.row -->
+        <!-- Content Row -->
+        <div class="row">
+            <!-- Map Column -->
+            <div class="col-md-5">
+                <img class="img-responsive" src="@Model.Image" alt="">
+            </div>
+            <!-- Contact Details Column -->
+            <div class="col-md-6">
+                <h1>Profile Details
+                    @if ((int)Session["userID"] == Model.Id)
+                    {
+                        <a class="btn btn-lg btn-info pull-right" style="margin-right:0.5%" href="~/User/updateProfile?id=@Model.Id">Update your Profile</a>
+                    }</h1>
+                <br />
+                <p>
+                    <font size="5">
+                        <i class="fa fa-pencil-square-o"></i>
+                        <abbr title="Name">N</abbr>: @Model.Name
+                    </font>
+                </p>
+                <p>
+                    <font size="5">
+                        <i class="fa fa-phone"></i>
+                        <abbr title="Phone">P</abbr>: @Model.Phone
+                    </font>
+                 </p>
+                    
+                <p>
+                    <font size="5">
+                        <i class="fa fa-envelope-o"></i>
+                        <abbr title="Email">E</abbr>: <a href="#">@Model.Email</a>
+                    </font>
+                </p>
+                <p>
+                    <font size="5">
+                        <i class="fa fa-home"></i>
+                        <abbr title="Home">H</abbr>: @Model.Address
+                    </font>
+                </p>
+                <p>
+                    <font size="5">
+                        <i class="fa fa-dollar"></i>
+                        <abbr title="User Type">Your 're </abbr>: @Model.User_Type
+                    </font>
+                </p>
+            </div>
+        </div>
+        <!-- /.row -->
+        <hr>
+
+        @if(Model.Families.Count != 0)
+        {
+             <div class="row">
+            <div class="col-lg-12">
+                <h2 class="page-header">Families You have Sposored</h2>
+            </div>
+            @foreach (var s in Model.Families)
+            {
+                    <div class="col-lg-12">
+                        <h3 class="page-header">Service: @s.Service.Description</h3><br />
+                        <h4>Families</h4>
+                    </div>
+                    foreach(var f in s.Service.Families)
+                    {
+                        if(f.User_ID == (int)Session["userID"] && f.SponsorStatus == "sponsored")
+                        {
+                                                     <div class="col-md-3 col-sm-6">
+                         <div class="panel panel-default text-center">
+                        <div class="panel-heading">
+                            <img class="img-responsive" src="@f.Image" alt="">
+                        </div>
+                        <div class="panel-body">
+                            <h5><strong>Name:</strong> @f.Name</h5>
+                            <h5><strong>Address:</strong> @f.Address</h5>
+                            <h5><strong>Donation:</strong> Rs. @f.Rupees</h5>
+                            @if ((string)Session["uname"] == "admin")
+                            {
+                                <a class="btn btn-default btn-info" style="margin-right:1%" href="updateFamily?id=@f.Id">Update</a>
+                                <a class="btn btn-default btn-danger" style="margin-right:1%" href="DeleteFamily?id=@f.Id">Delete</a>
+                            }
+
+                        </div>
+                    </div>
+                </div>   
+                        }
+                    }
+            }
+        </div>
+        <hr />
+        }
+    </div>
+</body>
+</html>

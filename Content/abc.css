@@ -1,0 +1,21 @@
+	.back_to_top {
+        position:fixed;
+        bottom: 70px;
+        right: 90px;
+        width: 90px;
+        height: 60px;
+        font: bold 0.9em/1.2em Arial, inherit, sans-serif;
+        color: #bbb;
+        text-transform: uppercase;
+        text-decoration:double;
+        padding: 10px;
+        background-color:beige;
+        border-radius: 5px;
+        box-shadow: 5px 5px 1px #333;
+        text-align:left;
+        word-break:inherit;
+        word-spacing:initial;
+        text-space-collapse:preserve;
+        text-emphasis:circle;
+    }
+    .back_to_top:hover { text-decoration: none; }

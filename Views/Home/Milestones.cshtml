@@ -1,0 +1,118 @@
+﻿@{
+    ViewBag.Title = "Milestones";
+}
+@model List<DONATE_TO_SAVE.Models.Milestone>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title></title>
+
+</head>
+<body>
+    <div class="container">
+        <!-- Page Heading/Breadcrumbs -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                    Milestones
+                </h1>
+                <ol class="breadcrumb">
+                    <li>
+                        <a href="#">Home</a>
+                    </li>
+                    <li class="active">Milestones</li>
+                </ol>
+            </div>
+        </div>
+        <div>
+            @if (Session["uname"] != null)
+            {
+                <form class="navbar-form navbar-center" action="/Search/milestoneSearchFunction" role="search">
+                    <div class="form-group">
+                        <input type="text" maxlength="100" size="139" name="search" required="" class="form-control" placeholder="Search Milestones Here" />
+                    </div>
+                    <input type="submit" class="btn btn-default btn-info" value="Search" />
+                </form>
+            }
+        </div>
+        <hr />
+        <!-- /.row -->
+        <!-- Intro Content -->
+<h1>Milestones Achieved</h1>
+@foreach (var m in Model)
+            {
+    <hr />
+        <div class="row">
+            
+                @if (m.Status == "achieved")
+                {
+                    <div class="col-md-5">
+                        <img class="img-responsive" src="@m.Image" alt="">
+                    </div>
+                    <div class="col-md-7">
+                        <h3>
+                            @m.Title
+                            @if ((string)Session["uname"] == "admin")
+                            {
+                                <a class="btn btn-default btn-danger pull-right" href="~/Milestones/DeleteMilestones?id=@m.Id">Remove it!</a>
+                            }
+                        </h3>
+                            @m.Explanation
+                    </div>
+                <hr />
+                    <br />
+                }
+            
+        </div>
+}
+        <br />
+        <hr />
+        <br />
+<h1>Milestones Ahead</h1>
+@foreach (var m in Model)
+            {
+    <hr />
+        <div class="row">
+
+                @if (m.Status == "ahead")
+                {
+                    <div class="col-md-5">
+                        <img class="img-responsive" src="@m.Image" alt="">
+                    </div>
+                    <div class="col-md-7">
+                        <h3>
+                            @m.Title
+                            @if ((string)Session["uname"] == "admin")
+                            {
+                                <a class="btn btn-default btn-danger pull-right" style="margin-right:1%" href="~/Milestones/DeleteMilestones?id=@m.Id">Remove</a>
+                                <a class="btn btn-default btn-info pull-right" style="margin-right:0.5%" href="~/Milestones/UpdateMilestones?id=@m.Id">Update</a>
+                                <a class="btn btn-default btn-warning pull-right" style="margin-right:0.5%" href="~/Milestones/AddMilestone">Add</a>
+                                <a class="btn btn-default btn-success pull-right" style="margin-right:2%" href="~/Milestones/ChangeStatus?id=@m.Id">Done?</a>
+                            }
+                        </h3>
+                        @m.Explanation
+                    </div>
+                    <br />
+                }
+            
+        </div>
+}
+        <br />
+        <hr />
+        <br />
+        <br />
+        @if ((string)Session["uname"] == "admin")
+        {
+            <a class="btn btn-default btn-warning pull-left" style="margin-right:0.5%" href="~/Milestones/AddMilestone">Add Milestone</a>
+        }
+       
+    </div>
+</body>
+</html>
+

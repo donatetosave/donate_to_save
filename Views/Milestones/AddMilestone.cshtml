@@ -1,0 +1,67 @@
+﻿@{
+    ViewBag.Title = "AddMilestone";
+}
+@model List<DONATE_TO_SAVE.Models.Service>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title></title>
+</head>
+<body>
+
+    <div class="container"><br /><br /><br /><br /><br /><br /></div>
+    <div class="row">
+        <div class="col-md-4">
+        </div>
+        <div class="container col-md-4 center">
+
+            <form class="form-signin" action="AddMilestoneFunction" method="post" enctype="multipart/form-data">
+                <h2 class="form-signin-heading">Add Milestone</h2>
+                <div class="controls">
+                    <label>Title:</label>
+                    <input name="Title" class="form-control" id="message" required="" maxlength="999" style="resize:none"/>
+                </div>
+                <p>
+                    <h2>Select Service</h2>
+                </p>
+                <p>
+                    <select name="Service_ID" class="form-control" required="required">
+                        @foreach (var s in Model)
+                        {
+                            <option value="@s.Id">@s.Description</option>
+                        }
+                    </select>
+                </p>
+
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="Status" value="ahead"><font size="3">Ahead(Not Done yet)  </font>
+                    </label>
+                    <label>
+                        <input type="radio" name="Status" value="achieved"><font size="3">  Done  </font>
+                    </label>
+                </div>
+                <br />
+                <div class="form-group">
+                    <font size="3">
+                        Upload Picture:<br /> <input required="" type="file" name="Image">
+                    </font>
+                </div><br />
+                <div class="control-group form-group">
+                    <div class="controls">
+                        <label>Explanation:</label>
+                        <textarea name="Explanation" rows="10" cols="100" class="form-control" id="message" required="" maxlength="999" style="resize:none"></textarea>
+                    </div>
+                </div>
+                <input type="submit" class="btn-lg btn-success" value="Add!" />
+            </form>
+        </div>
+    </div>
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+</body>
+
+</html>

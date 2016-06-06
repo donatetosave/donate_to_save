@@ -1,0 +1,48 @@
+﻿@{
+    ViewBag.Title = "UpdateMilestone";
+}
+@model DONATE_TO_SAVE.Models.Milestone
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title></title>
+</head>
+<body>
+
+    <div class="container"><br /><br /><br /><br /><br /><br /></div>
+    <div class="row">
+        <div class="col-md-4">
+        </div>
+        <div class="container col-md-4 center">
+
+           @using(Html.BeginForm("UpdateMilestoneFunction","Milestones",FormMethod.Post))
+            {
+                <h2 class="form-signin-heading">Update Milestone</h2>
+               @Html.HiddenFor(m => m.Id)
+                <div class="controls">
+                    <label>Title:</label>
+                    <input name="Title" value="@Model.Title" class="form-control" id="message" required="" maxlength="999" style="resize:none" />
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="Status" value="ahead"><font size="3">Ahead(Not Done yet)  </font>
+                    </label>
+                    <label>
+                        <input type="radio" name="Status" value="achieved"><font size="3">  Done  </font>
+                    </label>
+                </div>
+                <br /><br />
+                @Html.Label("Explanation")
+                @Html.TextAreaFor(m => m.Explanation, new { @rows = "10", @cols = "70" })
+                <input type="submit" class="btn-lg btn-success" value="Update!" />
+           }
+        </div>
+    </div>
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+</body>
+
+</html>

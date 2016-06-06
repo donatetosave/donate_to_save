@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="caaf9e66c22d43fcaa6bfe12bb52f2dc" Name="Diagram1">
+        <EntityTypeShape EntityType="Database1Model.Service" Width="1.5" PointX="5.375" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database1Model.Story" Width="1.5" PointX="0.5" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database1Model.User" Width="1.5" PointX="7.75" PointY="0.5" IsExpanded="true" />
+        <AssociationConnector Association="Database1Model.UserStory" ManuallyRouted="true" >
+          <ConnectorPoint PointX="8.03124875" PointY="4.5956022135416656" />
+          <ConnectorPoint PointX="8.03124875" PointY="8.141337890625" />
+          <ConnectorPoint PointX="2" PointY="8.141337890625" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Database1Model.Milestone" Width="1.5" PointX="0.5" PointY="3.375" />
+        <AssociationConnector Association="Database1Model.ServiceMilestone" />
+        <EntityTypeShape EntityType="Database1Model.Donation" Width="1.5" PointX="0.5" PointY="0.5" />
+        <AssociationConnector Association="Database1Model.UserDonation" />
+        <AssociationConnector Association="Database1Model.ServiceDonation" />
+        <EntityTypeShape EntityType="Database1Model.ServiceDonation1" Width="1.5" PointX="6.25" PointY="5.875" />
+        <AssociationConnector Association="Database1Model.UserServiceDonation1" />
+        <AssociationConnector Association="Database1Model.ServiceServiceDonation1" />
+        <EntityTypeShape EntityType="Database1Model.Message" Width="1.5" PointX="4.5" PointY="5.375" />
+        <EntityTypeShape EntityType="Database1Model.Reply" Width="1.5" PointX="2.625" PointY="5.375" />
+        <AssociationConnector Association="Database1Model.MessageReply" />
+        <AssociationConnector Association="Database1Model.UserMessage" />
+        <AssociationConnector Association="Database1Model.UserReply" />
+        <EntityTypeShape EntityType="Database1Model.Family" Width="1.5" PointX="3.125" PointY="1" />
+        <AssociationConnector Association="Database1Model.FamilyDonation" />
+        <AssociationConnector Association="Database1Model.ServiceFamily" />
+        <AssociationConnector Association="Database1Model.UserFamily" />
+        <EntityTypeShape EntityType="Database1Model.Task" Width="1.5" PointX="8.25" PointY="5.875" />
+        <AssociationConnector Association="Database1Model.UserTask" />
+        <EntityTypeShape EntityType="Database1Model.Review" Width="1.5" PointX="10" PointY="1.75" />
+        <AssociationConnector Association="Database1Model.FK_Review_User" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

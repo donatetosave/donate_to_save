@@ -1,0 +1,116 @@
+﻿@{
+    ViewBag.Title = "Donate Now!";
+}
+@model List<DONATE_TO_SAVE.Models.Service>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title></title>
+</head>
+<body>
+    <div class="container">
+        <!-- Page Heading/Breadcrumbs -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                    Donate Now!
+                </h1>
+                <ol class="breadcrumb">
+                    <li>
+                        <a href="#">Home</a>
+                    </li>
+                    <li class="active">Donate</li>
+                </ol>
+            </div>
+        </div>
+        <!-- /.row -->
+        <!-- Intro Content -->
+        <div class="row">
+            <div class="col-md-6">
+                @if(Session["uname"]==null)
+                {
+                    <h3>Please Login/Signup to Donate!<br /><br />Jaza'k'Allah</h3>
+                }
+                else
+                {
+                    <form action="~/Donation/AddDonation" method="post">
+                        <p>
+                            <h2>Select Service You Want To Sponsor</h2>
+                        </p>
+                        <p>
+                            <select name="Service_ID" class="form-control" required="required">
+                                @foreach (var s in Model)
+                                {
+                                    <option value="@s.Id">@s.Description</option>
+                                }
+                            </select>
+                        </p>
+                        <p>
+                            <h2>Your Credit Card Info</h2>
+                        </p>
+                        <p>
+                            <label>Card Number</label>
+                            <input id="cardNo" name="cardNo" required="required" type="text" placeholder="1122 2221 2332 4332" />
+                        </p>
+                        <p class="row">
+                            <label>Month</label>
+                            <select required="required">
+                                <option>January</option>
+                                <option>February</option>
+                                <option>March</option>
+                                <option>April</option>
+                                <option>May</option>
+                                <option>June</option>
+                                <option>July</option>
+                                <option>August</option>
+                                <option>September</option>
+                                <option>October</option>
+                                <option>November</option>
+                                <option>December</option>
+                            </select>
+                            <label>Year</label>
+                            <select required="required">
+                                <option>2015</option>
+                                <option>2016</option>
+                                <option>2017</option>
+                                <option>2018</option>
+                                <option>2019</option>
+                                <option>2020</option>
+                            </select>
+                        </p>
+                        <p>
+                            <label>CCV2</label>
+                            <input id="ccv2" name="ccv2" required="required" placeholder="eg.347" />
+                        </p>
+                        <p>
+                            <label>Donation</label>
+                            <input id="rs" name="Rupees" required="required" placeholder="in PK rupees" />
+                        </p>
+                        <p>
+                            <button class="btn btn-lg btn-success" type="submit">Donate</button>
+                        </p>
+                    </form>
+                }
+                
+            </div>
+            <div class="col-md-6">
+                <h2>How Important is YOUR Bit</h2>
+                <p>Whatever good we find in our lives is due to Allah’s blessings on us. And Allah loves those who spend in His path. And Allah’s wrath is upon those who keep from spending in His path. 
+                It’s our responsibility to spare some of our energies & time for our fellow Muslim brothers & sisters who need us. As we are blessed with more than what we really need we ought to share those blessings with others. 
+                Certainly Allah gives increases his favor upon those who sextend their blessings with others.</p>
+                <p>As a team, <strong>Donate to Save</strong> is trying to help make society socially empowered & educated. We cannot accomplish our goals without your help. For the continuity of our efforts we certainly need your help & support.
+                    This is a call for all those willing to collect Allah’s more & more blessings by sharing the blessings they already have with others needing them. You can help us in the following forms:</p>
+                <p>Donations </p>
+                <p>Volunteer Yourself </p>
+                <p>Promote Us </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

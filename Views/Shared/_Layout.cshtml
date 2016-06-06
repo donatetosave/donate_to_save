@@ -1,0 +1,199 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+
+    <link href="~/Content/abc.css" rel="stylesheet" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="~/Content/modern-business.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="~/Content/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+
+    
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                        <a class="navbar-brand" href="~/Home"><img src="~/images/logodin.PNG"  /> </a>
+
+                
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    @if(Session["uname"]==null)
+                    {
+                        <li>
+                            <a href="~/User/Signup">Sign-Up</a>
+                        </li>
+                    }
+                    <li>
+                        <a href="~/Home/Services">Services</a>
+                    </li>
+                    <li>
+                        <a href="~/Family/Families">Families</a>
+                    </li>
+                    <li>
+                        <a href="~/Home/Milestones">Milestones</a>
+                    </li>
+                    @if ((string)Session["uname"] != "admin" && ((string)Session["userType"] != "admin" || (string)Session["userType"] != "volunteer"))
+                    {
+                        <li>
+                            <a href="~/Home/Donate">How to Donate</a>
+                        </li>
+                    }
+                    @if ((string)Session["uname"] == "admin" || (string)Session["userType"] == "volunteer")
+                    {
+                        <li>
+                            <a href="~/Contact/ViewTasks">View Tasks</a>
+                        </li>
+                    }
+                    
+                    }
+                    @if ((string)Session["uname"] == "admin")
+                    {
+                        <li>
+                            <a href="~/User/showAllUsers">View Users</a>
+                        </li>
+                    }
+                    @if (Session["uname"] != null)
+                    {
+                        <li>
+                            <a href="~/Contact/ViewMessage">View Messages</a>
+                        </li>
+                   
+                             <li>
+                            <a href="~/User/Logout">Logout</a>
+                        </li>
+                    }
+                   
+                    <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Others <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                @if (Session["uname"] != null)
+                                {
+                                    int id = (int)Session["userID"];
+                                    <li>
+                                        <a href="~/User/showProfile?id=@id">View Profile</a>
+                                    </li>
+                                }
+                                @if ((string)Session["uname"] == "admin" || (string)Session["userType"] == "volunteer")
+                                {
+                                    <li>
+                                        <a href="~/Home/Donate">How to Donate</a>
+                                    </li>
+                                }
+                                <li>
+                                    <a href="~/Home/About">About Us</a>
+                                </li>
+                                <li>
+                                    <a href="~/Home/Contact">Contact Us</a>
+                                </li>
+                            </ul>
+                        </li>
+                       @* <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Blog <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="blog-home-1.html">Blog Home 1</a>
+                                </li>
+                                <li>
+                                    <a href="blog-home-2.html">Blog Home 2</a>
+                                </li>
+                                <li>
+                                    <a href="blog-post.html">Blog Post</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Other Pages <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="full-width.html">Full Width Page</a>
+                                </li>
+                                <li>
+                                    <a href="sidebar.html">Sidebar Page</a>
+                                </li>
+                                <li>
+                                    <a href="faq.html">FAQ</a>
+                                </li>
+                                <li>
+                                    <a href="404.html">404</a>
+                                </li>
+                                <li>
+                                    <a href="pricing.html">Pricing Table</a>
+                                </li>
+                            </ul>
+                        </li>*@
+                </ul>
+                @*@if (Session["uname"] != null)
+                {
+                    <form class="navbar-form navbar-center" action="/Search/FindFunction" role="search">
+                    <div class="form-group">
+                        <input type="text" name="search" required="" class="form-control" placeholder="Search" />
+                    </div>
+                    <input type="submit" class="btn btn-default btn-info" value="Search"/>
+                </form>   
+                }*@
+                
+                @if(Session["uname"] == null)
+                {
+                    <form class="navbar-form navbar-right" action="~/User/Login" method="post">
+                    <div class="form-group">
+                        <input type="text" name="Name" class="form-control" placeholder="Username" />
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="Password" class="form-control" placeholder="Password" />
+                    </div>
+                    <button class="btn btn-default btn-success" type="submit">Login</button>
+                </form>
+                }
+            </div>
+            <!-- /.navbar-collapse -->
+           
+        </div>
+        <!-- /.container -->
+        @if (Session["uname"] != null)
+        {
+            <br />
+            <br />
+            
+        }
+
+    </nav>
+    <br />
+    @RenderBody()
+    <a href="~/Home/Contact" class="back_to_top">message to admin</a>
+    <footer>
+
+        <div class="row">
+            <div class="col-lg-12">
+                
+            </div>
+        </div>
+    </footer>
+    <!-- /.container -->
+    <!-- jQuery -->
+    <script src="~/Scripts/jquery.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

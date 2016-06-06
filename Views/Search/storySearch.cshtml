@@ -1,0 +1,69 @@
+﻿@{
+    ViewBag.Title = "storySearch";
+}
+@model List<DONATE_TO_SAVE.Models.Story>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title></title>
+</head>
+<body>
+    <div class="container">
+        <!-- Page Heading/Breadcrumbs -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                    True Stories
+                </h1>
+                <ol class="breadcrumb">
+                    <li>
+                        <a href="~/Home">Home</a>
+                    </li>
+                    <li class="active">Stories</li>
+                </ol>
+            </div>
+        </div>
+        <hr />
+        <div>
+            @if (Session["uname"] != null)
+            {
+                <form class="navbar-form navbar-center" action="/Search/storySearchFunction" role="search">
+                    <div class="form-group">
+                        <input type="text" maxlength="100" size="139" name="search" required="" class="form-control" placeholder="Search Stories Here" />
+                    </div>
+                    <input type="submit" class="btn btn-default btn-info" value="Search" />
+                </form>
+            }
+        </div>
+        <hr />
+        <h1>Search Results</h1>
+                @foreach(var s in Model)
+                {
+        <div class="row">
+            <div class="col-md-5">
+                <img class="img-responsive" src="@s.Image" alt="">
+            </div>
+            <div class="col-md-7">
+                <h3>
+                    @s.Title
+                    @if ((string)Session["uname"] == "admin")
+                    {
+                        <a class="btn btn-default btn-info pull-right" style="margin-right:1%" href="~/Story/UpdateStoryView?id=@s.Id">Update</a>
+                        <a class="btn btn-default btn-danger pull-right" style="margin-right:1%" href="~/Story/DeleteStory?id=@s.Id">Delete</a>
+                    }
+                </h3>
+                @s.Explanation
+            </div>
+        </div>
+                <hr />
+                }
+        <hr>
+    </div>
+</body>
+</html>

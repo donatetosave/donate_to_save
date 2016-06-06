@@ -1,0 +1,64 @@
+﻿@{
+    ViewBag.Title = "addReview";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title></title>
+</head>
+<body>
+    <div class="container">
+        <!-- Page Heading/Breadcrumbs -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                    Add Review
+                </h1>
+                <ol class="breadcrumb">
+                    <li>
+                        <a href="#">Home</a>
+                    </li>
+                    <li class="active">Add Review</li>
+                </ol>
+            </div>
+        </div>
+        <h2>addReview</h2>
+        @if (Session["uname"] != null)
+        {
+            <div class="row">
+                <div class="col-md-8">
+                    <h3>Send us a Review</h3>
+                    <form name="sentMessage" id="contactForm" action="~/Contact/addReview">
+
+                        <div class="control-group form-group">
+                            <div class="controls">
+                                <label>Review:</label>
+                                <textarea name="Reviews" rows="10" cols="100" class="form-control" id="Reviews" required="" maxlength="999" style="resize:none"></textarea>
+                            </div>
+                        </div>
+                        <div id="success"></div>
+                        <!-- For success/fail messages -->
+                        <button type="submit" class="btn btn-primary">Send Review</button>
+                    </form>
+                </div>
+            </div>
+        }
+        else
+        {
+            <h1>Please Login/Signup To Send Us<br />Your Messages<br /></h1>
+        }
+        <!-- /.row                        <div class="control-group form-group">
+                            <div class="controls">
+                                <label>Subject:</label>
+                                <input type="text" name="Subject" class="form-control" id="email" required="">
+                            </div>
+                        </div> -->
+        <hr>
+    </div>
+    </body>
+</html>
