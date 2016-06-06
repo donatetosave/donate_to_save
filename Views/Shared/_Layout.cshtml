@@ -1,9 +1,6 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-
-
-    <link href="~/Content/abc.css" rel="stylesheet" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
@@ -14,7 +11,7 @@
     <link href="~/Content/modern-business.css" rel="stylesheet">
     <!-- Custom Fonts -->
     <link href="~/Content/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
+    <link href="~/Content/abc.css" rel="stylesheet" />
 </head>
 <body>
 
@@ -44,13 +41,19 @@
                         </li>
                     }
                     <li>
+                        <a href="~/BloodDonation/BloodDonation">DonateBlood</a>
+                    </li>
+                    <li>
+                        <a href="~/BloodDonation/AddBloodDonor">BloodDonorList</a>
+                    </li>
+                    <li>
                         <a href="~/Home/Services">Services</a>
                     </li>
                     <li>
                         <a href="~/Family/Families">Families</a>
                     </li>
                     <li>
-                        <a href="~/Home/Milestones">Milestones</a>
+                        <a href="~/Review/ViewReview">Reviews</a>
                     </li>
                     @if ((string)Session["uname"] != "admin" && ((string)Session["userType"] != "admin" || (string)Session["userType"] != "volunteer"))
                     {
@@ -86,6 +89,9 @@
                     <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Others <b class="caret"></b></a>
                             <ul class="dropdown-menu">
+                                <li>
+                                    <a href="~/Home/Milestones">Milestones</a>
+                                </li>
                                 @if (Session["uname"] != null)
                                 {
                                     int id = (int)Session["userID"];
@@ -99,6 +105,7 @@
                                         <a href="~/Home/Donate">How to Donate</a>
                                     </li>
                                 }
+                                
                                 <li>
                                     <a href="~/Home/About">About Us</a>
                                 </li>
@@ -181,7 +188,6 @@
     @RenderBody()
     <a href="~/Home/Contact" class="back_to_top">message to admin</a>
     <footer>
-
         <div class="row">
             <div class="col-lg-12">
                 

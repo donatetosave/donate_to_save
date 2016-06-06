@@ -9,8 +9,8 @@
         <EntityTypeShape EntityType="Database1Model.Story" Width="1.5" PointX="0.5" PointY="6" IsExpanded="true" />
         <EntityTypeShape EntityType="Database1Model.User" Width="1.5" PointX="7.75" PointY="0.5" IsExpanded="true" />
         <AssociationConnector Association="Database1Model.UserStory" ManuallyRouted="true" >
-          <ConnectorPoint PointX="8.03124875" PointY="4.5956022135416656" />
-          <ConnectorPoint PointX="8.03124875" PointY="8.141337890625" />
+          <ConnectorPoint PointX="8.06250125" PointY="4.5956022135416656" />
+          <ConnectorPoint PointX="8.06250125" PointY="8.141337890625" />
           <ConnectorPoint PointX="2" PointY="8.141337890625" />
         </AssociationConnector>
         <EntityTypeShape EntityType="Database1Model.Milestone" Width="1.5" PointX="0.5" PointY="3.375" />
@@ -34,6 +34,7 @@
         <AssociationConnector Association="Database1Model.UserTask" />
         <EntityTypeShape EntityType="Database1Model.Review" Width="1.5" PointX="10" PointY="1.75" />
         <AssociationConnector Association="Database1Model.FK_Review_User" />
+        <EntityTypeShape EntityType="Database1Model.BloodDonation" Width="1.5" PointX="3.375" PointY="8.75" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
